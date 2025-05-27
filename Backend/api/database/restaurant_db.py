@@ -51,3 +51,9 @@ def get_restaurants_by_owner(db: Session, owner_id: int):
         return []
     
     return restaurants
+
+def delete_restaurant(restaurant_id: int, db: Session):
+    restaurant = db.query(Restaurant).filter(Restaurant.id == restaurant_id).first()
+    if restaurant:
+        db.delete(restaurant)
+        db.commit()

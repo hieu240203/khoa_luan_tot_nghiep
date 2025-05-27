@@ -25,7 +25,8 @@ export default function OwnerDashboard() {
   const [deleteStatus, setDeleteStatus] = useState({ message: "", type: "" })
   const [alert, setAlert] = useState({ message: "", type: "" })
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
-
+  const [restaurantIdToUpdate, setRestaurantIdToUpdate] = useState("");
+  const [showUpdateDialog, setShowUpdateDialog] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -157,6 +158,39 @@ export default function OwnerDashboard() {
               <DialogFooter>
                 <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)}>Hủy</Button>
                 <Button variant="destructive" onClick={handleDeleteRestaurant}>Xóa nhà hàng</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="secondary">🛠️ Sửa nhà hàng</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle>Sửa nhà hàng</DialogTitle>
+                <DialogDescription>Nhập ID của nhà hàng bạn muốn chỉnh sửa.</DialogDescription>
+              </DialogHeader>
+              <div className="py-4 space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="restaurant-id-edit">ID nhà hàng</Label>
+                  <Input
+                    id="restaurant-id-edit"
+                    placeholder="Nhập ID nhà hàng"
+                    value={restaurantIdToUpdate}
+                    onChange={(e) => setRestaurantIdToUpdate(e.target.value)}
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <Button variant="outline">Hủy</Button>
+                <Button
+                  onClick={() => {
+                    localStorage.setItem("restaurant_id_to_update", restaurantIdToUpdate);
+                    router.push("/owner/update_restaurant");
+                  }}
+                >
+                  Tiếp tục
+                </Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>

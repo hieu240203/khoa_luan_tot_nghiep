@@ -133,7 +133,7 @@ from api.schemas.owner_request import OwnerRequestOut, OwnerRequestCreate
 from api.services import owner_request_service
 from api.database import restaurant_db
 from datetime import datetime
-from typing import List
+from typing import List 
 
 router = APIRouter()
 
@@ -155,8 +155,10 @@ def register_restaurant(
         name=data.name,
         district=data.district,
         city=data.city,
+        price_range=data.price_range,
         category=data.category,
         cuisine_style=data.cuisine_style,
+        target_audience=data.target_audience,
         opening_hours=data.opening_hours,
         images=data.images,
         description=data.description,
@@ -172,8 +174,10 @@ def register_restaurant(
         "name": restaurant.name,
         "district": restaurant.district,
         "city": restaurant.city,
+        "price_range": restaurant.price_range, 
         "category": restaurant.category,
         "cuisine_style": restaurant.cuisine_style,
+        "target_audience": restaurant.target_audience,
         "opening_hours": restaurant.opening_hours,
         "images": restaurant.images,
         "description": restaurant.description,

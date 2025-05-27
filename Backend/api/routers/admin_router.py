@@ -8,7 +8,7 @@ from api.services.admin_service import (
     update_restaurant_admin,
     delete_restaurant_admin
 )
-from api.models.models import Restaurant, Review, Favorite, OwnerRequest, User
+from api.models.models import Restaurant, Review, Favorite, OwnerRequest, User, RecommendFeedback
 from typing import List
 from api.models.models import User
 from api.schemas.owner_request import OwnerRequestOut
@@ -90,11 +90,12 @@ def count_reviews(db: Session = Depends(get_db)):
     count = db.query(review_db.Review).count()
     return {"total_reviews": count}
 
-# API lấy số lượng đánh giá
+
 @router.get("/count/feedbacks")
-def count_reviews(db: Session = Depends(get_db)):
-    count = db.query(feedback_db.User).count()
-    return {"total_reviews": count}
+def count_feedbacks(db: Session = Depends(get_db)):
+    count = db.query(RecommendFeedback).count()
+    return {"total_feedbacks": count}
+
 
 @router.post("/{restaurant_id}/menu", response_model=MenuItemSchema)
 def create_menu_item(

@@ -289,7 +289,7 @@ export default function RecommendationPage() {
             </TabsTrigger>
             <TabsTrigger value="contentBased" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
               <ThumbsUp className="mr-2 h-4 w-4" />
-              Dựa trên sở thích
+              Dựa trên hồ sở người dùng
             </TabsTrigger>
             <TabsTrigger value="collaborative" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
               <Users className="mr-2 h-4 w-4" />

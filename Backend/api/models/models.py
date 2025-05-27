@@ -129,11 +129,4 @@ class OwnerRequest(Base):
 
     user = relationship("User", back_populates="owner_requests")
 
-# class RecommendSession(Base):
-#     __tablename__ = "recommend_session"
 
-#     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-#     user_id = Column(Integer, nullable=False)
-#     algorithm_type = Column(String(50), nullable=False)
-#     restaurant_ids = Column(JSON, nullable=False)
-#     timestamp = Column(DateTime, default=datetime.utcnow)
